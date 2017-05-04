@@ -1,0 +1,27 @@
+{
+  "name": "pizzashop",
+  "version": "1.0.0",
+  "description": "pizza shop with Django and AngularJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isidrok/Django-pizza-shop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isidrok/Django-pizza-shop/issues"
+  },
+  "homepage": "https://github.com/isidrok/Django-pizza-shop#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "rollup": "^0.41.6"
+  },
+  "dependencies": {
+    "angular": "^1.5.11"
+  }
+}
