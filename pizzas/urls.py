@@ -5,6 +5,8 @@ from django.conf.urls import url, include
 
 from pizzas import views
 
+
+#Register the views of the app, 
 urlpatterns = [
     url(r'^pizza/(?P<pk>\d+)', views.detail_view, name='pizza-detail'),
     url(r'^login/$', views.login_view, name="login"),
