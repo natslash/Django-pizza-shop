@@ -1,0 +1,1 @@
+export const App = angular.module('pizza-shop');
