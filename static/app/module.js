@@ -1,1 +1,2 @@
-export const App = angular.module('pizza-shop');
+import {angular} from '../vendor';
+export const App = angular.module('pizza-shop',['ui.router']);

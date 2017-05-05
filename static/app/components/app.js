@@ -1,30 +1,27 @@
-import App from '../module';
+import { App } from '../module';
 
 const html = `
 <div layout="column" style="height:500px;" ng-cloak>
     <section layout="row" flex>
 
-        <md-sidenav>
-            <md-toolbar>
-                <h1>Pizza Shop</h1>
-            </md-toolbar>
+        <md-sidenav class = "md-sidenav md-sidenav-left md-whiteframe-z2" md-whiteframe="4">
+            
+            <header class="nav-header">
+                <img src="static/img/logo.png" alt>
+                <h1 class="md-title">Pizza Shop</h1>
+            </header>
+
             <md-content layout-padding>
                 <il-menuitems></il-menuitems>
             </md-content>
         </md-sidenav>
 
-        <md-content flex layout-padding>
-            <il-container>json-server</il-container>
-        </md-content>
-
     </section>
 </div>
 `;
 
-function Component(){
-    return{
-        template: html
-    };
+export const ilApp ={
+    template: html
 }
 
-App.component('il-app',Component);
+App.component('ilApp',ilApp);
