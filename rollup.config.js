@@ -1,9 +1,9 @@
-import uglify from 'rollup-plugin-uglify';
+// import uglify from 'rollup-plugin-uglify';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
-import html from 'rollup-plugin-html';
 import postcss from 'rollup-plugin-postcss';
+import string from 'rollup-plugin-string';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
 
@@ -15,14 +15,15 @@ export default {
     plugins: [
         serve({
             open: true,
-            contentBase: ['.','static/templates/pizzashop'],
+            contentBase: ['.', 'static/templates/pizzashop'],
             port: 8000
         }),
         livereload({
+            watch: 'static/dist',
             delay: 4000
         }),
-        html({
-            include: '**/*.hmtl'
+        string({
+            include: '**/*.html'
         }),
         postcss({
             extensions: ['.css'],
@@ -36,8 +37,9 @@ export default {
         babel({
             exclude: [
                 'node_modules/**',
+                '**/*.html'
             ]
-        }),
+        })
         // uglify()
     ],
     sourceMap: true,

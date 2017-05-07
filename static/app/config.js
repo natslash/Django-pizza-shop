@@ -10,4 +10,4 @@ export function config(stateProvider, urlRouterProvider) {
         });
 }
 
-App.config(config);
+App.config(config); 
