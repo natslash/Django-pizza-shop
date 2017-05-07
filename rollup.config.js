@@ -18,7 +18,9 @@ export default {
             contentBase: ['.','static/templates/pizzashop'],
             port: 8000
         }),
-        livereload(),
+        livereload({
+            delay: 4000
+        }),
         html({
             include: '**/*.hmtl'
         }),
