@@ -4,8 +4,9 @@
   "description": "pizza shop with Django and AngularJS",
   "main": "index.js",
   "scripts": {
-    "build": "rollup -c",
-    "serve": "json-server db.json"
+    "build": "rollup -c --watch",
+    "serve": "json-server db.json",
+    "start": "npm-run-all --parallel build serve"
   },
   "repository": {
     "type": "git",
@@ -21,13 +22,17 @@
     "babel-cli": "^6.24.1",
     "babel-preset-es2015-rollup": "^3.0.0",
     "json-server": "^0.10.0",
+    "npm-run-all": "^4.0.2",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-html": "^0.2.1",
+    "rollup-plugin-livereload": "^0.4.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-postcss": "^0.4.1",
-    "rollup-plugin-uglify": "^1.0.2"
+    "rollup-plugin-serve": "^0.3.0",
+    "rollup-plugin-uglify": "^1.0.2",
+    "rollup-watch": "^3.2.2"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.1",
