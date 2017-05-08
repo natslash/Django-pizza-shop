@@ -1,39 +1,33 @@
 // import { App } from '../module';
-// import html from '../../templates/pizzashop/menuitems.html';
+// import html from '../../templates/pizzashop/pizzalist.html';
 
-// export const ilMenuItems = {
-//     controller: 'menuItemsCtrl',
+// export const ilPizzaList = {
+//     controller: 'pizzaListCtrl',
 //     template: html
 // };
+// App.component('ilPizzaList', ilPizzaList);
 
-// App.component('ilMenuItems', ilMenuItems);
+// pizzaListCtrl.$inject = ["pizzaListService"]
+// function pizzaListCtrl(pizzaListService) {
+//     let _this = this;
+//     _this.pizzas = [];
+//     getPizzas();
 
-// menuItemsCtrl.$inject = ["Service"]
-// function menuItemsCtrl(service) {
-
-
-// }
-// App.controller('menuItemsCtrl', menuItemsCtrl)
-
-// menuItemsService.$inject = ["$http"]
-// function menuItemsService(http) {
-//     function isAuthenticated(id) {
-//         return $http.get(
-//             `localhost:3000/users/${id}`
-//         ).then(function (response) {
-//             return response.is_authenticated;
-//         }, function (error) {
-//             throw error;
-//         });
-//     }
-//     function getUserName(id) {
-//         return $http.get(
-//             `localhost:3000/users/${id}`
-//         ).then(function (response) {
-//             return response.name;
-//         }, function (error) {
-//             throw error;
-//         });
+//     function getPizzas() {
+//         pizzaListService.getPizzas()
+//             .then(c => _this.pizzas = c.data);
 //     }
 // }
-// App.service('pizasService', service);
+// App.controller('pizzaListCtrl', pizzaListCtrl);
+
+// pizzaListService.$inject = ["$http"]
+// function pizzaListService($http) {
+//     return {
+//         getPizzas: function () {
+//             return $http.get(
+//                 'http://localhost:3000/pizzas'
+//             );
+//         }
+//     };
+// }
+// App.service('pizzaListService', pizzaListService);

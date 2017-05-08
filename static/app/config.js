@@ -7,6 +7,10 @@ export function config(stateProvider, urlRouterProvider) {
         .state('otherwise', {
             url: '/',
             component: 'il-app'
+        })
+        .state('pizzalist',{
+            url: '/pizzalist',
+            component:'il-pizza-list'
         });
 }
 

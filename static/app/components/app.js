@@ -11,20 +11,15 @@ const html = `
         </header>
           
         <md-content layout-padding>
+          
+            <a class="md-button" ui-sref="pizzalist">
+                <div>Show Pizzas</div>
+            </a>
+
             <il-menuitems></il-menuitems>
         </md-content>
 
     </md-sidenav>
-    
-     <div layout="column" tabindex="-1" role="main" flex class="layout-column flex">
-        <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar _md _md-toolbar-transitions">
-            
-        </md-toolbar>
-        <md-content md-scroll-y="" layout="column" flex class="_md layout-column flex">
-            
-        </md-content>
-    </div>
-     
 `;
 
 export const ilApp ={
