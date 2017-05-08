@@ -1,4 +1,4 @@
-// import uglify from 'rollup-plugin-uglify';
+import uglify from 'rollup-plugin-uglify';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
@@ -29,7 +29,7 @@ export default {
                 '**/*.html'
             ]
         }),
-        // uglify()
+        uglify()
     ],
     sourceMap: true,
     sourceMapFile: 'static/dist/app.js.map'
