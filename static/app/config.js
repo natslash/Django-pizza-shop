@@ -4,13 +4,14 @@ config.$inject = ["$stateProvider", "$urlRouterProvider"];
 export function config(stateProvider, urlRouterProvider) {
     urlRouterProvider.otherwise('/');
     stateProvider
-        .state('otherwise', {
+        .state('app', {
             url: '/',
-            component: 'il-app'
+            component: 'ilApp'
         })
         .state('pizzalist',{
-            url: '/pizzalist',
-            component:'il-pizza-list'
+            parent: 'app',
+            url: 'pizzalist',
+            component:'ilPizzaList'
         });
 }
 

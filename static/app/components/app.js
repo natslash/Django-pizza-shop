@@ -12,14 +12,14 @@ const html = `
           
         <md-content layout-padding>
           
-            <a class="md-button" ui-sref="pizzalist">
+             <a class="md-button" ui-sref="pizzalist">
                 <div>Show Pizzas</div>
             </a>
 
-            <il-menuitems></il-menuitems>
         </md-content>
 
     </md-sidenav>
+    <div ui-view></div>
 `;
 
 export const ilApp ={
