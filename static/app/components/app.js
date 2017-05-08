@@ -18,10 +18,10 @@ const html = `
     
      <div layout="column" tabindex="-1" role="main" flex class="layout-column flex">
         <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar _md _md-toolbar-transitions">
-            ggfjhfhdf
+            
         </md-toolbar>
         <md-content md-scroll-y="" layout="column" flex class="_md layout-column flex">
-            adadad
+            
         </md-content>
     </div>
      
@@ -30,5 +30,4 @@ const html = `
 export const ilApp ={
     template: html
 }
-
 App.component('ilApp',ilApp);

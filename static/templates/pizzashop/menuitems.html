@@ -1,0 +1,5 @@
+<a class="btn btn-primary button-margin" role="button" href="{% url 'add-pizza' %}">Add pizza</a>
+<a class="btn btn-primary button-margin" role="button" href="{% url 'login' %}">Login</a>
+<a class="btn btn-primary button-margin" role="button" href="{% url 'register' %}">Register</a>
+<b>Hello, {{ request.user.username }}</b>
+<a class="btn btn-danger button-margin" role="button" href="{% url 'logout' %}">Logout</a>

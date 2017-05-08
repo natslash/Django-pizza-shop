@@ -12,7 +12,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 def pizza_list(request):
     pizzas = Pizza.objects.all()
-    return render(request, 'pizzashop/index.html', {'pizzas': pizzas})
+    return render(request, 'pizzashop/base.html', {'pizzas': pizzas})
 
 
 @login_required()

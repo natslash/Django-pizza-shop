@@ -4,9 +4,10 @@
   "description": "pizza shop with Django and AngularJS",
   "main": "index.js",
   "scripts": {
-    "build": "rollup -c --watch",
-    "serve": "json-server db.json",
-    "start": "npm-run-all --parallel build serve"
+    "build": "rollup -c rollup.config.js",
+    "build:dev": "rollup -c rollup.config.dev.js --watch",
+    "serve-json": "json-server db.json",
+    "start": "npm-run-all --parallel build:dev serve-json"
   },
   "repository": {
     "type": "git",

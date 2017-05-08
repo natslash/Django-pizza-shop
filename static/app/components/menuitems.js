@@ -1,43 +1,39 @@
 // import { App } from '../module';
+// import html from '../../templates/pizzashop/menuitems.html';
 
-// const html = `
+// export const ilMenuItems = {
+//     controller: 'menuItemsCtrl',
+//     template: html
+// };
 
-// `;
-// function Component(){
-//    return {
-//       controller:'PizzaController'
-//       controllerAs:'pizzas"
-//       template:'<item_pizza pizza='pizza'></item-pizza>,
-//       binding:{
-//          @pizza
-//       }
-//    } 
+// App.component('ilMenuItems', ilMenuItems);
+
+// menuItemsCtrl.$inject = ["Service"]
+// function menuItemsCtrl(service) {
+
+
 // }
+// App.controller('menuItemsCtrl', menuItemsCtrl)
 
-// App.component('pizzas',Component)
-
-// Controller.$inject = ["Service"]
-// function Controller(Service){
-//     constructor() {
-//       this.pizzas = [];
-//       this.searhPizza();
-      
+// menuItemsService.$inject = ["$http"]
+// function menuItemsService(http) {
+//     function isAuthenticated(id) {
+//         return $http.get(
+//             `localhost:3000/users/${id}`
+//         ).then(function (response) {
+//             return response.is_authenticated;
+//         }, function (error) {
+//             throw error;
+//         });
 //     }
-//     get pizzas(){ 
-//        Service.pizzas(this.name).then(c=>this.pizzas = c);
-//     }
-//     searchPizza(){
-//        this.pizzas();
-//     }
-   
-// }
-// App.controller('pizzaController',Controller)
-
-
-// Service.$inject =["$http"]
-// function Service($http){
-//     pizzas(string name){
-//       return $http.get('
+//     function getUserName(id) {
+//         return $http.get(
+//             `localhost:3000/users/${id}`
+//         ).then(function (response) {
+//             return response.name;
+//         }, function (error) {
+//             throw error;
+//         });
 //     }
 // }
-// App.service('pizasService',service);
+// App.service('pizasService', service);
