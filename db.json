@@ -3,16 +3,24 @@
         {
             "id": 1,
             "name": "margarita",
-            "image": 1,
+            "img": "static/img/margarita.png",
             "ingridients": []
         },
         {
             "id": 2,
             "name": "carbonara",
-            "image": 2,
+            "img": "static/img/carbonara.png",
             "ingridients": [
-                1,
-                3
+                {
+                    "id": 3,
+                    "name": "bacon",
+                    "prize": 5
+                },
+                {
+                    "id": 1,
+                    "name": "onion",
+                    "prize": 2
+                }
             ]
         }
     ],

@@ -7,7 +7,7 @@ export const ilPizzaList = {
 };
 App.component('ilPizzaList', ilPizzaList);
 
-pizzaListCtrl.$inject = ["pizzaListService"]
+pizzaListCtrl.$inject = ['pizzaListService']
 function pizzaListCtrl(pizzaListService) {
     let _this = this;
     _this.pizzas = [];
@@ -20,7 +20,7 @@ function pizzaListCtrl(pizzaListService) {
 }
 App.controller('pizzaListCtrl', pizzaListCtrl);
 
-pizzaListService.$inject = ["$http"]
+pizzaListService.$inject = ['$http']
 function pizzaListService($http) {
     return {
         getPizzas: function () {

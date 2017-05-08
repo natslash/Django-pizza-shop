@@ -2,7 +2,7 @@ import { App } from './module';
 
 config.$inject = ["$stateProvider", "$urlRouterProvider"];
 export function config(stateProvider, urlRouterProvider) {
-    urlRouterProvider.otherwise('/');
+    urlRouterProvider.otherwise('/pizzalist');
     stateProvider
         .state('app', {
             url: '/',
@@ -12,7 +12,12 @@ export function config(stateProvider, urlRouterProvider) {
             parent: 'app',
             url: 'pizzalist',
             component:'ilPizzaList'
+        })
+        .state('pizzas',{
+            parent: 'app',
+            url: 'pizzas/:id',
+            component: 'ilPizza'
         });
 }
 
-App.config(config); 
+App.config(config);  

@@ -1,25 +1,32 @@
 import { App } from '../module';
 
 const html = `
-    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2 hide-print md-closed ng-isolate-scope _md md-locked-open"> 
-        
-        <header class="nav-header">
-            <a class="pizza-logo">
-                <img src="static/img/logo.png" alt>
-                <h1 class="md-title md-heading ng-isolated-scope">Pizza Shop</h1>
-            </a>
-        </header>
-          
-        <md-content layout-padding>
-          
-             <a class="md-button" ui-sref="pizzalist">
-                <div>Show Pizzas</div>
-            </a>
-
+    <div ng-cloak>
+        <md content class="md-padding">
+                
+            <header>
+                    <img src="static/img/logo.png" alt>
+                    <h1 class="md-title md-heading">Pizza Shop</h1>
+            </header>
+            
+            <md-nav-bar  md-selected-nav-item="currentNavItem">
+                <md-nav-item class="md-button" ui-sref="pizzalist">
+                    Show pizzas
+                </md-nav-item>
+                <md-nav-item class="md-button" ui-sref="addpizza">
+                    Add pizza
+                </md-nav-item>
+                <md-nav-item class="md-button" ui-sref="login">
+                    Login
+                </md-nav-item>
+                <md-nav-item class="md-button" ui-sref="pizzalist">
+                    Register
+                </md-nav-item>
+            </md-nav-bar>
+            
+            <div class="ext-content" ui-view/>
         </md-content>
-
-    </md-sidenav>
-    <div ui-view></div>
+    </div>
 `;
 
 export const ilApp ={

@@ -1,0 +1,9 @@
+<div layout="row">
+    <div ng-bind="$ctrl.name"></div>
+    <img ng-src="{{$ctrl.img}}" ui-sref="pizzas({id: pizza.id})" />
+    <div>{{$ctrl.ingridients.length !==0 ? "Ingridients:" : ""}}</div>
+    <div layout="column" ng-repeat="ingridient in $ctrl.ingridients">
+        <div ng-bind="ingridient.name">, </div>
+        <div ng-bind="ingridient.prize">$</div>
+    </div>
+</div>
