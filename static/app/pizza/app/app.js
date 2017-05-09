@@ -1,7 +1,7 @@
 import { App } from '../../module';
 
-const html = `<div layout="column" style="height:500px;" ng-cloak>
- 
+const html = 
+`<div layout="column" ng-cloak>
   <section layout="row" flex>
 
     <md-sidenav
@@ -11,54 +11,26 @@ const html = `<div layout="column" style="height:500px;" ng-cloak>
         md-whiteframe="4">
 
       <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+        <img src="static/img/logo.png" alt>
+        <h1 class="md-toolbar-tools">Pizza Shop</h1>
       </md-toolbar>
-      <md-content layout-padding>
-        <md-button ng-click="close()" class="md-primary" hide-gt-md>
-          Close Sidenav Left
+
+      <md-content layout="column" layout-padding>
+        <md-button class="md-primary" ui-sref="pizzalist">
+          show pizzas
         </md-button>
-        <p hide show-gt-md>
-          This sidenav is locked open on your device. To go back to the default behavior,
-          narrow your display.
-        </p>
+        <md-button class="md-primary" ui-sref="addpizza">
+          Add pizza
+        </md-button>
       </md-content>
 
     </md-sidenav>
 
     <md-content flex layout-padding>
-
-      <div layout="column" layout-align="top center">
-        <p>
-        The left sidenav will 'lock open' on a medium (>=960px wide) device.
-        </p>
-        <p>
-        The right sidenav will focus on a specific child element.
-        </p>
-
-        <div>
-          <md-button ng-click="toggleLeft()"
-            class="md-primary" hide-gt-md>
-            Toggle left
-          </md-button>
-        </div>
-
-        <div>
-          <md-button ng-click="toggleRight()"
-            ng-hide="isOpenRight()"
-            class="md-primary">
-            Toggle right
-          </md-button>
-        </div>
-      </div>
-
-      <div flex></div>
-
+      <div ui-view flex></div>
     </md-content>
 
-  
-
   </section>
-
 </div>`
 
 export const ilApp ={
