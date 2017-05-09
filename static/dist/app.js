@@ -84653,7 +84653,7 @@ __$styleInject(".pizza-logo {\n  text-align: center;\n  display: -webkit-box;\n 
 
 var angular$1 = index;
 
-var App = angular$1.module('pizza-shop', ['ui.router']);
+var App = angular$1.module('pizza-shop', ['ui.router', 'ngMaterial']);
 
 config.$inject = ["$stateProvider", "$urlRouterProvider"];
 function config(stateProvider, urlRouterProvider) {
@@ -84669,15 +84669,19 @@ function config(stateProvider, urlRouterProvider) {
         parent: 'app',
         url: 'pizzas/:id',
         component: 'ilPizza'
+    }).state('addpizza', {
+        parent: 'app',
+        url: 'pizzas/add',
+        component: 'ilAddPizza'
     });
 }
 
 App.config(config);
 
-var html = '\n    <div ng-cloak>\n        <md content class="md-padding">\n                \n            <header>\n                    <img src="static/img/logo.png" alt>\n                    <h1 class="md-title md-heading">Pizza Shop</h1>\n            </header>\n            \n            <md-nav-bar  md-selected-nav-item="currentNavItem">\n                <md-nav-item class="md-button" ui-sref="pizzalist">\n                    Show pizzas\n                </md-nav-item>\n                <md-nav-item class="md-button" ui-sref="addpizza">\n                    Add pizza\n                </md-nav-item>\n                <md-nav-item class="md-button" ui-sref="login">\n                    Login\n                </md-nav-item>\n                <md-nav-item class="md-button" ui-sref="pizzalist">\n                    Register\n                </md-nav-item>\n            </md-nav-bar>\n            \n            <div class="ext-content" ui-view/>\n        </md-content>\n    </div>\n';
+var html = '<div layout="column" style="height:500px;" ng-cloak>\n \n  <section layout="row" flex>\n\n    <md-sidenav\n        class="md-sidenav-left"\n        md-component-id="left"\n        md-is-locked-open="$mdMedia(\'gt-md\')"\n        md-whiteframe="4">\n\n      <md-toolbar class="md-theme-indigo">\n        <h1 class="md-toolbar-tools">Sidenav Left</h1>\n      </md-toolbar>\n      <md-content layout-padding>\n        <md-button ng-click="close()" class="md-primary" hide-gt-md>\n          Close Sidenav Left\n        </md-button>\n        <p hide show-gt-md>\n          This sidenav is locked open on your device. To go back to the default behavior,\n          narrow your display.\n        </p>\n      </md-content>\n\n    </md-sidenav>\n\n    <md-content flex layout-padding>\n\n      <div layout="column" layout-align="top center">\n        <p>\n        The left sidenav will \'lock open\' on a medium (>=960px wide) device.\n        </p>\n        <p>\n        The right sidenav will focus on a specific child element.\n        </p>\n\n        <div>\n          <md-button ng-click="toggleLeft()"\n            class="md-primary" hide-gt-md>\n            Toggle left\n          </md-button>\n        </div>\n\n        <div>\n          <md-button ng-click="toggleRight()"\n            ng-hide="isOpenRight()"\n            class="md-primary">\n            Toggle right\n          </md-button>\n        </div>\n      </div>\n\n      <div flex></div>\n\n    </md-content>\n\n  \n\n  </section>\n\n</div>';
 
 var ilApp = {
-    template: html
+  template: html
 };
 App.component('ilApp', ilApp);
 
@@ -84713,7 +84717,7 @@ function pizzaListService($http) {
 }
 App.service('pizzaListService', pizzaListService);
 
-var html$2 = "<div layout=\"row\">\n    <div>{{$ctrl.name}}</div>\n    <img ng-src=\"{{$ctrl.img}}\" ui-sref=\"pizzas({id: pizza.id})\" />\n    <div ng-show=\"$ctrl.hasIngridients()\">Ingridients: </div>\n    <div layout=\"column\" ng-repeat=\"ingridient in $ctrl.ingridients\">\n        <div layout=\"row\">\n            <div>{{ingridient.name}}: </div>\n            <div>{{ingridient.prize}}$</div>\n        </div>\n    </div>\n</div>";
+var html$2 = "<div layout=\"row\">\n    <div>{{$ctrl.name}}</div>\n    <img ng-src=\"{{$ctrl.img}}\"/>\n    <div ng-show=\"$ctrl.hasIngridients()\">Ingridients: </div>\n    <div layout=\"column\" ng-repeat=\"ingridient in $ctrl.ingridients\">\n        <div layout=\"row\">\n            <div>{{ingridient.name}}: </div>\n            <div>{{ingridient.prize}}$</div>\n        </div>\n    </div>\n    <div layout=\"column\" ng-repeat=\"comment in $ctrl.comments\">\n        <div layout=\"row\">\n            <div>{{comment.user}}: </div>\n            <div>{{comment.created}}</div>\n            <div>{{comment.score}}</div>\n        </div>\n    </div>\n</div>";
 
 var ilPizza = {
     controller: 'pizzaCtrl',
@@ -84754,6 +84758,7 @@ var PizzaCtrl = function () {
         this.name = null;
         this.img = null;
         this.ingridients = null;
+        this.comments = null;
         this.config(state);
     }
 
@@ -84767,6 +84772,7 @@ var PizzaCtrl = function () {
                 _this.name = data.name;
                 _this.img = data.img;
                 _this.ingridients = data.ingridients;
+                _this.comments = data.comments;
             });
         }
     }, {
@@ -84799,6 +84805,66 @@ var PizzaService = function () {
 PizzaService.$inject = ['$http'];
 App.service('pizzaService', PizzaService);
 
+var html$3 = "<div layout=\"column\" ng-cloak class=\"md-form\">\r\n    <md-content layout-padding>\r\n        <div>\r\n            <form>\r\n                <div layout=\"column\">\r\n\r\n                    <md-input-container>\r\n                        <label>Pizza:</label>\r\n                        <input ng-model=\"data.name\" />\r\n                    </md-input-container>\r\n\r\n                    <md-input-container>\r\n                        <label>Ingredients</label>\r\n                        <md-select ng-model=\"data.ingredients\">\r\n                            <md-option ng-repeat=\"ingridient in $ctrl.ingridients\" value=\"{{ingridient.name}}\">\r\n                                 {{ingridient.name}}\r\n                            </md-option>\r\n                        </md-select>\r\n                    </md-input-container>\r\n\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </md-content>\r\n</div>";
+
+var ilAddPizza = {
+    controller: 'addPizzaCtrl',
+    template: html$3
+};
+App.component('ilAddPizza', ilAddPizza);
+
+var AddPizzaCtrl = function () {
+    function AddPizzaCtrl(addPizzaService) {
+        classCallCheck(this, AddPizzaCtrl);
+
+        this.addPizzaService = addPizzaService;
+        this.ingridients = null;
+        this.getIngridients();
+    }
+
+    createClass(AddPizzaCtrl, [{
+        key: 'savePizza',
+        value: function savePizza() {
+            this.addPizzaService.savePizza(this.data);
+        }
+    }, {
+        key: 'getIngridients',
+        value: function getIngridients() {
+            var _this = this;
+            this.addPizzaService.getIngridients().then(function (c) {
+                return _this.ingridients = c.data;
+            });
+        }
+    }]);
+    return AddPizzaCtrl;
+}();
+AddPizzaCtrl.$inject = ['addPizzaService'];
+App.controller('addPizzaCtrl', AddPizzaCtrl);
+
+var AddPizzaService = function () {
+    function AddPizzaService(http) {
+        classCallCheck(this, AddPizzaService);
+
+        this.http = http;
+    }
+
+    createClass(AddPizzaService, [{
+        key: 'savePizza',
+        value: function savePizza(data) {
+            return this.http.post('http://localhost:3000/pizzas/', data);
+        }
+    }, {
+        key: 'getIngridients',
+        value: function getIngridients() {
+            return this.http.get('http://localhost:3000/ingridients');
+        }
+    }]);
+    return AddPizzaService;
+}();
+
+AddPizzaService.$inject = ['$http'];
+App.service('addPizzaService', AddPizzaService);
+
 exports.App = App;
 exports.config = config;
 exports.ilApp = ilApp;
@@ -84806,6 +84872,9 @@ exports.ilPizzaList = ilPizzaList;
 exports.ilPizza = ilPizza;
 exports.PizzaCtrl = PizzaCtrl;
 exports.PizzaService = PizzaService;
+exports.ilAddPizza = ilAddPizza;
+exports.AddPizzaCtrl = AddPizzaCtrl;
+exports.AddPizzaService = AddPizzaService;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

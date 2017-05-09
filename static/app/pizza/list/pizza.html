@@ -1,0 +1,18 @@
+<div layout="row">
+    <div>{{$ctrl.name}}</div>
+    <img ng-src="{{$ctrl.img}}"/>
+    <div ng-show="$ctrl.hasIngridients()">Ingridients: </div>
+    <div layout="column" ng-repeat="ingridient in $ctrl.ingridients">
+        <div layout="row">
+            <div>{{ingridient.name}}: </div>
+            <div>{{ingridient.prize}}$</div>
+        </div>
+    </div>
+    <div layout="column" ng-repeat="comment in $ctrl.comments">
+        <div layout="row">
+            <div>{{comment.user}}: </div>
+            <div>{{comment.created}}</div>
+            <div>{{comment.score}}</div>
+        </div>
+    </div>
+</div>

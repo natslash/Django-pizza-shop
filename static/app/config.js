@@ -8,15 +8,20 @@ export function config(stateProvider, urlRouterProvider) {
             url: '/',
             component: 'ilApp'
         })
-        .state('pizzalist',{
+        .state('pizzalist', {
             parent: 'app',
             url: 'pizzas',
-            component:'ilPizzaList'
+            component: 'ilPizzaList'
         })
-        .state('pizzas',{
+        .state('pizzas', {
             parent: 'app',
             url: 'pizzas/:id',
             component: 'ilPizza'
+        })
+        .state('addpizza', {
+            parent: 'app',
+            url: 'pizzas/add',
+            component: 'ilAddPizza'
         });
 }
 

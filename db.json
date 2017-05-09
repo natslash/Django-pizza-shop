@@ -4,7 +4,16 @@
             "id": 1,
             "name": "margarita",
             "img": "static/img/margarita.png",
-            "ingridients": []
+            "ingridients": [],
+            "comments": [
+                {
+                    "text": "bad",
+                    "created": "1/3/17",
+                    "score": 2,
+                    "user": "Pepe",
+                    "pizza": 1
+                }
+            ]
         },
         {
             "id": 2,
@@ -20,6 +29,22 @@
                     "id": 1,
                     "name": "onion",
                     "prize": 2
+                }
+            ],
+            "comments": [
+                {
+                    "text": "good",
+                    "created": "1/12/16",
+                    "score": 7,
+                    "user": "Juan",
+                    "pizza": 2
+                },
+                {
+                    "text": "awesome",
+                    "created": "5/4/17",
+                    "score": 9,
+                    "user": "María",
+                    "pizza": 2
                 }
             ]
         }
@@ -46,21 +71,21 @@
             "text": "good",
             "created": "1/12/16",
             "score": 7,
-            "user": 1,
+            "user": "Juan",
             "pizza": 2
         },
         {
             "text": "awesome",
             "created": "5/4/17",
             "score": 9,
-            "user": 2,
+            "user": "María",
             "pizza": 2
         },
         {
             "text": "bad",
             "created": "1/3/17",
             "score": 2,
-            "user": 3,
+            "user": "Pepe",
             "pizza": 1
         }
     ]
