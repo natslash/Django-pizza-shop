@@ -9,6 +9,13 @@ export class PizzaService {
             `http://localhost:3000/pizzas/${id}`
         );
     }
+    submitComment(data) {
+        console.log(data);
+        return this.http.post(
+            `http://localhost:3000/comments/`,
+            data
+        );
+    }
 }
 
 PizzaService.$inject = ['$http'];

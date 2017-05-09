@@ -2,18 +2,18 @@ import { App } from '../../module';
 
 export class PizzaCtrl {
     constructor(state, pizzaService) {
-        this.state = state;
+        this.id = state.params && state.params.id;
         this.pizzaService = pizzaService;
         this.name = null;
         this.img = null;
         this.ingridients = null;
         this.comments = null;
+        this.comment = {};
         this.config(state);
     }
     config() {
         let _this = this;
-        let id = this.state.params && this.state.params.id;
-        this.pizzaService.getPizza(id)
+        this.pizzaService.getPizza(this.id)
             .then(function (response) {
                 let data = response.data;
                 _this.name = data.name;
@@ -24,6 +24,13 @@ export class PizzaCtrl {
     }
     hasIngridients() {
         return this.ingridients && this.ingridients.length > 0;
+    }
+    submitComment() {
+        this.comment.date = new Date();
+        this.comment.text = this.comment.text || "";
+        this.comment.pizza = parseInt(this.id);
+        this.comment.user = "TODO";
+        this.pizzaService.submitComment(JSON.stringify(this.comment));
     }
 }
 PizzaCtrl.$inject = ['$state', 'pizzaService'];
