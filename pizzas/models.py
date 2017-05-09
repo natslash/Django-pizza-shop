@@ -16,8 +16,12 @@ class Ingredient(models.Model):
     name = models.CharField(verbose_name=_("Name"), max_length=100)
     price = models.DecimalField(verbose_name=_("Price"), max_digits=6, decimal_places=2)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
+
+# Previous version of Python    
+#    def __unicode__(self):
+#        return self.name
 
 
 def pizzas_pictures_path(instance, filename):
