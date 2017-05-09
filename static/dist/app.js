@@ -84678,43 +84678,28 @@ function config(stateProvider, urlRouterProvider) {
 
 App.config(config);
 
-var html = '<div layout="column" ng-cloak>\n  <section layout="row" flex>\n\n    <md-sidenav\n        class="md-sidenav-left"\n        md-component-id="left"\n        md-is-locked-open="$mdMedia(\'gt-md\')"\n        md-whiteframe="4">\n\n      <md-toolbar class="md-theme-indigo">\n        <img src="static/img/logo.png" alt>\n        <h1 class="md-toolbar-tools">Pizza Shop</h1>\n      </md-toolbar>\n\n      <md-content layout="column" layout-padding>\n        <md-button class="md-primary" ui-sref="pizzalist">\n          show pizzas\n        </md-button>\n        <md-button class="md-primary" ui-sref="addpizza">\n          Add pizza\n        </md-button>\n      </md-content>\n\n    </md-sidenav>\n\n    <md-content flex layout-padding>\n      <div ui-view flex></div>\n    </md-content>\n\n  </section>\n</div>';
+var html = '<div layout="column" ng-cloak>\n  <section layout="row" flex>\n\n    <md-sidenav\n        md-component-id="sidenav"\n        class="md-sidenav-left"\n        md-component-id="left"\n        md-is-locked-open="$mdMedia(\'gt-md\')"\n        md-whiteframe="4">\n\n      <md-toolbar class="md-theme-indigo">\n        <img src="static/img/logo.png" alt>\n        <h1 class="md-toolbar-tools">Pizza Shop</h1>\n      </md-toolbar>\n\n      <md-content layout="column" layout-padding>\n        <md-button class="md-primary" ui-sref="pizzalist" ng-click="$ctrl.closeSideNav()">\n          show pizzas\n        </md-button>\n        <md-button class="md-primary" ui-sref="addpizza" ng-click="$ctrl.closeSideNav()">\n          Add pizza\n        </md-button>\n      </md-content>\n\n    </md-sidenav>\n\n    <div layout="column" flex>\n    <md-toolbar  layout-align="center center" layout="row" class="site-content-toolbar" ng-show="$ctrl.isSideNavClosed()">\n        <img src="static/img/menu.png" class="md-icon-button md-button" ng-click="$ctrl.openSideNav()"></img>\n        <h1 class="md-toolbar-tools">Pizza Shop</h1>\n    </md-toolbar>\n    <md-content flex layout-padding>\n      <div ui-view flex></div>\n    </md-content>\n    </div>\n  </section>\n</div>';
 
 var ilApp = {
-    template: html
+  template: html,
+  controller: 'appCtrl'
 };
 App.component('ilApp', ilApp);
 
-/*
-const html = `
-    <div ng-cloak>
-        <md content class="md-padding">
-
-            <header>
-                    <img src="static/img/logo.png" alt>
-                    <h1 class="md-title md-heading">Pizza Shop</h1>
-            </header>
-
-            <md-nav-bar  md-selected-nav-item="currentNavItem">
-                <md-nav-item class="md-button" ui-sref="pizzalist">
-                    Show pizzas
-                </md-nav-item>
-                <md-nav-item class="md-button" ui-sref="addpizza">
-                    Add pizza
-                </md-nav-item>
-                <md-nav-item class="md-button" ui-sref="login">
-                    Login
-                </md-nav-item>
-                <md-nav-item class="md-button" ui-sref="pizzalist">
-                    Register
-                </md-nav-item>
-            </md-nav-bar>
-
-            <div class="ext-content" ui-view/>
-        </md-content>
-    </div>
-`;
- */
+appCtrl.$inject = ['$mdSidenav'];
+function appCtrl(mdSidenav) {
+    this.mdSidenav = mdSidenav;
+    this.isSideNavClosed = function () {
+        return !(this.mdSidenav("sidenav").isOpen() || this.mdSidenav("sidenav").isLockedOpen());
+    };
+    this.openSideNav = function () {
+        this.mdSidenav("sidenav").toggle();
+    };
+    this.closeSideNav = function () {
+        this.mdSidenav("sidenav").close();
+    };
+}
+App.controller('appCtrl', appCtrl);
 
 var html$1 = "<md-content class=\"md-padding\" layout-xs=\"column\" layout=\"row\">\r\n    <div flex-xs flex-gt-xs=\"50\" layout=\"column\" ng-repeat=\"pizza in $ctrl.pizzas\">\r\n        <md-card class=\"md-button\" ui-sref=\"pizzas({id: pizza.id})\">\r\n            <md-card-title>\r\n                <md-card-title-text>\r\n                    <span class=\"md-seccondary\">{{pizza.name}}</span>\r\n                </md-card-title-text>\r\n            </md-card-title>\r\n            <img ng-src=\"{{pizza.img}}\" class=\"md-card-image\" >\r\n        </md-card>\r\n    </div>\r\n</md-content>";
 
@@ -84748,7 +84733,7 @@ function pizzaListService($http) {
 }
 App.service('pizzaListService', pizzaListService);
 
-var html$2 = "<md-content class=\"md-padding\">\r\n    <div flex-xs flex-gt-xs=\"50\" layout=\"row\" layout-xs=\"column\">\r\n        <div class=\"md-title\">{{$ctrl.name}}</div>\r\n        <img ng-src=\"{{$ctrl.img}}\" />\r\n        <div ng-show=\"$ctrl.hasIngridients()\">Ingridients: </div>\r\n        <div layout=\"column\" ng-repeat=\"ingridient in $ctrl.ingridients\">\r\n            <div layout=\"row\">\r\n                <div>{{ingridient.name}}: </div>\r\n                <div>{{ingridient.prize}}$</div>\r\n            </div>\r\n        </div>\r\n        <md-list layout-padding flex>\r\n            <md-list-item class=\"md-3-line\" ng-repeat=\"comment in $ctrl.comments\">\r\n                <!--- <img ng-src=\"{{comment.user.image}}\" class=\"md-avatar\"}\"> -->\r\n                <div class=\"md-list-item-text\">\r\n                    <h3>{{comment.user}}: {{comment.score}}</h3>\r\n                    <h4>{{comment.created}}</h4>\r\n                    <p>\r\n                        {{comment.text}}\r\n                    </p>\r\n                </div>\r\n            </md-list-item>\r\n        </md-list>\r\n    </div>\r\n    </div>";
+var html$2 = "<md-content class=\"md-padding\" layout-xs=\"column\" layout=\"row\">\r\n    <div flex-xs flex-gt-xs=\"50\" layout=\"row\" layout-xs=\"column\">\r\n        <div class=\"md-title\">{{$ctrl.name}}</div>\r\n        <img ng-src=\"{{$ctrl.img}}\" />\r\n        <div ng-show=\"$ctrl.hasIngridients()\">Ingridients: </div>\r\n        <div layout=\"column\" ng-repeat=\"ingridient in $ctrl.ingridients\">\r\n            <div layout=\"row\">\r\n                <div>{{ingridient.name}}: </div>\r\n                <div>{{ingridient.prize}}$</div>\r\n            </div>\r\n        </div>\r\n        <md-list layout-padding flex>\r\n            <md-list-item class=\"md-3-line\" ng-repeat=\"comment in $ctrl.comments\">\r\n                <!--- <img ng-src=\"{{comment.user.image}}\" class=\"md-avatar\"}\"> -->\r\n                <div class=\"md-list-item-text\">\r\n                    <h3>{{comment.user}}: {{comment.score}}</h3>\r\n                    <h4>{{comment.created}}</h4>\r\n                    <p>\r\n                        {{comment.text}}\r\n                    </p>\r\n                </div>\r\n            </md-list-item>\r\n        </md-list>\r\n    </div>\r\n    </div>";
 
 var ilPizza = {
     controller: 'pizzaCtrl',

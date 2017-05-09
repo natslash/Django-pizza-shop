@@ -5,6 +5,7 @@ const html =
   <section layout="row" flex>
 
     <md-sidenav
+        md-component-id="sidenav"
         class="md-sidenav-left"
         md-component-id="left"
         md-is-locked-open="$mdMedia('gt-md')"
@@ -16,55 +17,30 @@ const html =
       </md-toolbar>
 
       <md-content layout="column" layout-padding>
-        <md-button class="md-primary" ui-sref="pizzalist">
+        <md-button class="md-primary" ui-sref="pizzalist" ng-click="$ctrl.closeSideNav()">
           show pizzas
         </md-button>
-        <md-button class="md-primary" ui-sref="addpizza">
+        <md-button class="md-primary" ui-sref="addpizza" ng-click="$ctrl.closeSideNav()">
           Add pizza
         </md-button>
       </md-content>
 
     </md-sidenav>
 
+    <div layout="column" flex>
+    <md-toolbar  layout-align="center center" layout="row" class="site-content-toolbar" ng-show="$ctrl.isSideNavClosed()">
+        <img src="static/img/menu.png" class="md-icon-button md-button" ng-click="$ctrl.openSideNav()"></img>
+        <h1 class="md-toolbar-tools">Pizza Shop</h1>
+    </md-toolbar>
     <md-content flex layout-padding>
       <div ui-view flex></div>
     </md-content>
-
+    </div>
   </section>
 </div>`
 
 export const ilApp = {
-  template: html
+  template: html,
+  controller: 'appCtrl'
 }
 App.component('ilApp', ilApp);
-
-/*
-const html = `
-    <div ng-cloak>
-        <md content class="md-padding">
-
-            <header>
-                    <img src="static/img/logo.png" alt>
-                    <h1 class="md-title md-heading">Pizza Shop</h1>
-            </header>
-
-            <md-nav-bar  md-selected-nav-item="currentNavItem">
-                <md-nav-item class="md-button" ui-sref="pizzalist">
-                    Show pizzas
-                </md-nav-item>
-                <md-nav-item class="md-button" ui-sref="addpizza">
-                    Add pizza
-                </md-nav-item>
-                <md-nav-item class="md-button" ui-sref="login">
-                    Login
-                </md-nav-item>
-                <md-nav-item class="md-button" ui-sref="pizzalist">
-                    Register
-                </md-nav-item>
-            </md-nav-bar>
-
-            <div class="ext-content" ui-view/>
-        </md-content>
-    </div>
-`;
- */
