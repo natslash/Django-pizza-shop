@@ -2,7 +2,7 @@ import { App } from './module';
 
 config.$inject = ["$stateProvider", "$urlRouterProvider"];
 export function config(stateProvider, urlRouterProvider) {
-    urlRouterProvider.otherwise('/pizzalist');
+    urlRouterProvider.otherwise('/pizzas');
     stateProvider
         .state('app', {
             url: '/',
@@ -10,7 +10,7 @@ export function config(stateProvider, urlRouterProvider) {
         })
         .state('pizzalist',{
             parent: 'app',
-            url: 'pizzalist',
+            url: 'pizzas',
             component:'ilPizzaList'
         })
         .state('pizzas',{

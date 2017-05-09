@@ -1,0 +1,11 @@
+<div layout="row">
+    <div>{{$ctrl.name}}</div>
+    <img ng-src="{{$ctrl.img}}" ui-sref="pizzas({id: pizza.id})" />
+    <div ng-show="$ctrl.hasIngridients()">Ingridients: </div>
+    <div layout="column" ng-repeat="ingridient in $ctrl.ingridients">
+        <div layout="row">
+            <div>{{ingridient.name}}: </div>
+            <div>{{ingridient.prize}}$</div>
+        </div>
+    </div>
+</div>

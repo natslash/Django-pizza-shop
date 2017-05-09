@@ -1,3 +1,5 @@
 export * from './module';
 export * from './config';
-export * from './components';  
+export * from './app';
+export * from './pizzalist';
+export * from './pizza';
