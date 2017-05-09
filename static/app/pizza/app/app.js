@@ -1,7 +1,7 @@
 import { App } from '../../module';
 
-const html = 
-`<div layout="column" ng-cloak>
+const html =
+  `<div layout="column" ng-cloak>
   <section layout="row" flex>
 
     <md-sidenav
@@ -33,10 +33,10 @@ const html =
   </section>
 </div>`
 
-export const ilApp ={
-    template: html
+export const ilApp = {
+  template: html
 }
-App.component('ilApp',ilApp);
+App.component('ilApp', ilApp);
 
 /*
 const html = `

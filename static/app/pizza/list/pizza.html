@@ -1,19 +1,25 @@
-<md-content class="md-padding layout-xs-column lyout-row" layout
-<div layout="row">
-    <div>{{$ctrl.name}}</div>
-    <img ng-src="{{$ctrl.img}}"/>
-    <div ng-show="$ctrl.hasIngridients()">Ingridients: </div>
-    <div layout="column" ng-repeat="ingridient in $ctrl.ingridients">
-        <div layout="row">
-            <div>{{ingridient.name}}: </div>
-            <div>{{ingridient.prize}}$</div>
+<md-content class="md-padding">
+    <div flex-xs flex-gt-xs="50" layout="row" layout-xs="column">
+        <div class="md-title">{{$ctrl.name}}</div>
+        <img ng-src="{{$ctrl.img}}" />
+        <div ng-show="$ctrl.hasIngridients()">Ingridients: </div>
+        <div layout="column" ng-repeat="ingridient in $ctrl.ingridients">
+            <div layout="row">
+                <div>{{ingridient.name}}: </div>
+                <div>{{ingridient.prize}}$</div>
+            </div>
         </div>
+        <md-list layout-padding flex>
+            <md-list-item class="md-3-line" ng-repeat="comment in $ctrl.comments">
+                <!--- <img ng-src="{{comment.user.image}}" class="md-avatar"}"> -->
+                <div class="md-list-item-text">
+                    <h3>{{comment.user}}: {{comment.score}}</h3>
+                    <h4>{{comment.created}}</h4>
+                    <p>
+                        {{comment.text}}
+                    </p>
+                </div>
+            </md-list-item>
+        </md-list>
     </div>
-    <div layout="column" ng-repeat="comment in $ctrl.comments">
-        <div layout="row">
-            <div>{{comment.user}}: </div>
-            <div>{{comment.created}}</div>
-            <div>{{comment.score}}</div>
-        </div>
     </div>
-</div>
