@@ -118,6 +118,15 @@
       "ingridients": [],
       "image": null,
       "id": 12
+    },
+    {
+      "name": "sfsfs",
+      "ingridients": [],
+      "image": null,
+      "ingredients": [
+        "onion"
+      ],
+      "id": 13
     }
   ],
   "ingridients": [

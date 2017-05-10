@@ -9,24 +9,9 @@ from pizzas.forms import PizzaForm, CommentForm
 from pizzas.models import Pizza
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
-
-def pizza_list(request):
-    pizzas = Pizza.objects.all()
-    return render(request, 'pizzashop/list.html', {'pizzas': pizzas})
-
-
 @login_required()
-@permission_required('pizzashop.add_pizza')
-def add_pizza(request):
-    if request.method == "POST":
-        form = PizzaForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-        return redirect('pizza-list')
-    else:
-        form = PizzaForm()
-        return render(request, 'pizzashop/add.html', {'form': form})
-
+def pizza_list(request):
+    return render(request, 'pizzashop/index.html')
 
 def login_view(request):
     if request.user.is_authenticated():
@@ -63,26 +48,6 @@ def register_view(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
-
-
-def detail_view(request, pk):
-    pizza = get_object_or_404(Pizza, pk=pk)
-    data = {
-        'object': pizza
-    }
-    if request.user.is_authenticated():
-        if request.method == "POST":
-            form = CommentForm(data=request.POST)
-            if form.is_valid():
-                comment = form.save(commit=False)
-                comment.user = request.user
-                comment.pizza = pizza
-                comment.save()
-                form = CommentForm()
-        else:
-            form = CommentForm()
-        data['form'] = form
-    return render(request, 'pizzashop/pizza_detail.html', data)
 
 
 def logout_view(request):
