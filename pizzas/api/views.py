@@ -10,7 +10,7 @@ from pizzas.api.serializers import IngredientSerializer, PizzaSerializer, Commen
 from pizzas.models import Ingredient, Pizza, Comment
 
 
-class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
+class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
     permission_classes = []
@@ -22,7 +22,7 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
     #     return Ingredient.objects.all()
 
 
-class PizzaViewSet(viewsets.ReadOnlyModelViewSet):
+class PizzaViewSet(viewsets.ModelViewSet):
     queryset = Pizza.objects.all()
     serializer_class = PizzaSerializer
     permission_classes = []
