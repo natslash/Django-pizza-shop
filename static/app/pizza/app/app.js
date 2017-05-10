@@ -23,6 +23,9 @@ const html =
         <md-button class="md-primary" ui-sref="addpizza" ng-click="$ctrl.closeSideNav()">
           Add pizza
         </md-button>
+         <md-button class="md-primary" href="http://localhost:8000/logout" ng-click="$ctrl.closeSideNav()">
+          Logout
+        </md-button>
       </md-content>
 
     </md-sidenav>
