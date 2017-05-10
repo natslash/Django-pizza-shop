@@ -1,34 +1,11 @@
-.pizza-logo {
-  text-align: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  padding: 0 0 16px;
-  margin: 0 auto;
+
+input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+display:inline-block;
+margin:20px;
+padding: 4px 16px;
+background-color: #FFFFFF;
+border:solid 1px #666F77;
+border-radius: 6px;
+color:#666F77;
 }
-.pizza-logo:focus {
-  outline: none;
-}
-.pizza-logo > img {
-  height: 150px;
-  width: auto;
-  display: block;
-  -webkit-transform-origin: 50% 0;
-          transform-origin: 50% 0;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
-}
-.site-sidenav {
-    width: 272px;
-    min-width: 272px;
-    max-width: 272px;
-    background: #106CC8;
-    color: white;
-}
+

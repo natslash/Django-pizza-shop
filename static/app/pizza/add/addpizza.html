@@ -3,7 +3,6 @@
         <div>
             <form name="pizzaForm">
                 <div layout="column">
-
                     <md-input-container class="md-block">
                         <label>Pizza:</label>
                         <input required type="string" name="name" ng-model="$ctrl.pizza.name" />
@@ -22,10 +21,22 @@
                             </md-option>
                         </md-select>
                     </md-input-container>
-
                 </div>
-                <div>
-                    <md-button type="submit" ng-click="$ctrl.savePizza()">Submit</md-button>
+
+                <div layout="row">
+                    <div>
+                        <div class="md-button md-primary" type="file" il-img-viewer ngf-select ng-required ng-model="$ctrl.picFile" name="file" ngf-max-size="2MB"
+                            ngf-resize="{width: 296, height: 296}" result-image="resultImage">
+                            Upload Image
+                        </div>
+                        <label class="md-subhead">{{$ctrl.picFile.$ngfName}}</label>
+                        <div>
+                            <img id="preview" />
+                        </div>
+                    </div>
+                </div>
+                <div layout="row">
+                    <md-button class="md-primary" type="submit" ng-click="$ctrl.savePizza() ">Submit</md-button>
                 </div>
             </form>
         </div>

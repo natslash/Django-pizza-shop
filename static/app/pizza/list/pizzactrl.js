@@ -30,7 +30,7 @@ export class PizzaCtrl {
         this.comment.text = this.comment.text || "";
         this.comment.pizza = parseInt(this.id);
         this.comment.user = "TODO";
-        this.pizzaService.submitComment(JSON.stringify(this.comment));
+        this.pizzaService.submitComment(this.comment);
     }
 }
 PizzaCtrl.$inject = ['$state', 'pizzaService'];
