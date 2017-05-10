@@ -45,7 +45,7 @@
         </md-list>
     </div>
     <div layout="row" flex>
-        <md-list layout-padding>
+        <md-list layout-padding ng-show="$ctrl.hasIngridients()">
             <div class="md-title">Ingridients</div>
             <md-list-item class="md-3-line" ng-repeat="ingridient in $ctrl.ingridients">
                 <div class="md-list-item-text">

@@ -4,10 +4,15 @@ export class AddPizzaCtrl {
     constructor(addPizzaService) {
         this.addPizzaService = addPizzaService;
         this.ingridients = null;
+        this.pizza = {
+            name: null,
+            ingridients: [],
+            image: null
+        };
         this.getIngridients();
     }
     savePizza() {
-        this.addPizzaService.savePizza(this.data);
+        this.addPizzaService.savePizza(this.pizza);
     }
     getIngridients() {
         let _this = this;
