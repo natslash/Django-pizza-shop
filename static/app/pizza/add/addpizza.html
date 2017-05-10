@@ -1,0 +1,33 @@
+<div layout="column" ng-cloak class="md-form">
+    <md-content layout-padding>
+        <div>
+            <form name="pizzaForm">
+                <div layout="column">
+
+                    <md-input-container class="md-block">
+                        <label>Pizza:</label>
+                        <input required type="string" name="name" ng-model="$ctrl.pizza.name" />
+                        <div ng-messages="pizzaForm.name.$error" md-auto-hide="false">
+                            <div ng-message="required">
+                                You've got to put a name!
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Ingredients</label>
+                        <md-select ng-model="$ctrl.pizza.ingredients" multiple>
+                            <md-option ng-repeat="ingridient in $ctrl.ingridients" value="{{ingridient.name}}">
+                                {{ingridient.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                </div>
+                <div>
+                    <md-button type="submit" ng-click="$ctrl.savePizza()">Submit</md-button>
+                </div>
+            </form>
+        </div>
+    </md-content>
+</div>

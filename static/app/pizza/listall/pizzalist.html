@@ -1,0 +1,12 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs layout-xs="column" layout="row" ng-repeat="pizza in $ctrl.pizzas">
+        <md-card class="md-button" ui-sref="pizzas({id: pizza.id})">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-seccondary">{{pizza.name}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <img ng-src="{{pizza.img}}" class="md-card-image" >
+        </md-card>
+    </div>
+</md-content>

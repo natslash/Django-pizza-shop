@@ -1,11 +1,9 @@
 {% extends 'pizzashop/base.html' %} {% block title %}Pizzas{% endblock %} {% block content %}
-<a class="btn btn-primary button-margin" role="button" href="{% url 'add-pizza' %}">Add pizza</a> {% if not request.user.is_authenticated
-%}
+<a class="btn btn-primary button-margin" role="button" href="{% url 'add-pizza' %}">Add pizza</a> {% if not request.user.is_authenticated %}
 <a class="btn btn-primary button-margin" role="button" href="{% url 'login' %}">Iniciar sesión</a>
 <a class="btn btn-primary button-margin" role="button" href="{% url 'register' %}">Regístrate</a> {% else %}
 <b>Hola, {{ request.user.username }}</b>
-<a class="btn btn-danger button-margin" role="button" href="{% url 'logout' %}">Cerrar sesión</a> {% endif %} {% for pizza
-in pizzas %}
+<a class="btn btn-danger button-margin" role="button" href="{% url 'logout' %}">Cerrar sesión</a> {% endif %} {% for pizza in pizzas %}
 <div class="panel panel-default">
     <div class="panel-heading"><a href="{% url 'pizza-detail' pk=pizza.pk %}">{{ pizza.name }}</a> - {{ pizza.price }}€</div>
     <div class="panel-body">
