@@ -8,7 +8,7 @@ export class AddPizzaCtrl {
             name: null,
             ingridients: [],
             image: null
-        };
+        }; 
         this.getIngridients();
     }
     savePizza() {

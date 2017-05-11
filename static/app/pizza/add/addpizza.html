@@ -1,33 +1,40 @@
-<div layout="column" ng-cloak class="md-form">
-    <md-content layout-padding>
-        <div>
-            <form name="pizzaForm">
-                <div layout="column">
-
-                    <md-input-container class="md-block">
-                        <label>Pizza:</label>
-                        <input required type="string" name="name" ng-model="$ctrl.pizza.name" />
-                        <div ng-messages="pizzaForm.name.$error" md-auto-hide="false">
-                            <div ng-message="required">
-                                You've got to put a name!
-                            </div>
+<md-content class="md-padding" layout="column" layout-wrap layout-padding>
+        <form name="pizzaForm">
+            <div layout="column">
+                <md-input-container class="md-block">
+                    <label>Pizza:</label>
+                    <input required type="string" name="name" ng-model="$ctrl.pizza.name" />
+                    <div ng-messages="pizzaForm.name.$error" md-auto-hide="false">
+                        <div ng-message="required">
+                            You've got to put a name!
                         </div>
-                    </md-input-container>
+                    </div>
+                </md-input-container>
 
-                    <md-input-container>
-                        <label>Ingredients</label>
-                        <md-select ng-model="$ctrl.pizza.ingredients" multiple>
-                            <md-option ng-repeat="ingridient in $ctrl.ingridients" value="{{ingridient.name}}">
-                                {{ingridient.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
+                <md-input-container>
+                    <label>Ingredients</label>
+                    <md-select ng-model="$ctrl.pizza.ingredients" multiple>
+                        <md-option ng-repeat="ingridient in $ctrl.ingridients" value="{{ingridient.name}}">
+                            {{ingridient.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
 
-                </div>
+            <div layout="row">
                 <div>
-                    <md-button type="submit" ng-click="$ctrl.savePizza()">Submit</md-button>
+                    <div class="md-button md-primary" type="file" il-img-viewer ngf-select ng-required ng-model="$ctrl.picFile" name="file" ngf-max-size="2MB"
+                        ngf-resize="{width: 296, height: 296}">
+                        Upload Image
+                    </div>
+                    <label class="md-subhead">{{$ctrl.picFile.$ngfName}}</label>
+                    <div>
+                        <img id="preview" />
+                    </div>
                 </div>
-            </form>
-        </div>
-    </md-content>
-</div>
+            </div>
+            <div layout="row">
+                <md-button class="md-primary" type="submit" ng-click="$ctrl.savePizza() ">Submit</md-button>
+            </div>
+        </form>
+</md-content>

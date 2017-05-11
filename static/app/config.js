@@ -1,7 +1,7 @@
 import { App } from './module';
 
-config.$inject = ["$stateProvider", "$urlRouterProvider"];
-export function config(stateProvider, urlRouterProvider) {
+config.$inject = ["$stateProvider", "$urlRouterProvider", "$httpProvider"];
+export function config(stateProvider, urlRouterProvider, httpProvider) {
     urlRouterProvider.otherwise('/pizzas');
     stateProvider
         .state('app', {
@@ -23,6 +23,8 @@ export function config(stateProvider, urlRouterProvider) {
             url: 'pizzas/add',
             component: 'ilAddPizza'
         });
+    // httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    // httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }
 
 App.config(config);  

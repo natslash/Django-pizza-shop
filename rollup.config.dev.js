@@ -7,7 +7,7 @@ config.plugins.unshift(
     serve({
         open: true,
         contentBase: ['.', 'static/templates/pizzashop'],
-        port: 8000
+        port: 8080
     }),
     livereload({
         watch: 'static/dist',

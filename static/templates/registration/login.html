@@ -1,4 +1,4 @@
-{% extends 'pizzashop/base.html' %}
+{% extends 'registration/base.html' %}
 
 {% block title %}Login{% endblock %}
 
@@ -7,5 +7,6 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Login</button>
+        <a class="btn btn-primary button-margin" role="button" href="{% url 'register' %}">Register</a> 
     </form>
 {% endblock %}
