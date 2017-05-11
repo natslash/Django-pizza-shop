@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 from django.views.generic import DetailView
@@ -15,7 +16,7 @@ def config(request):
     content = 'var config = {token: myToken};'
     response = HttpResponse(content, content_type='application/javascript')
     response['Content-Length'] = len(content)
-    return redirect('pizza-list', response)
+    return response
 
 @login_required()
 def pizza_list(request):
@@ -57,8 +58,8 @@ def register_view(request):
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
-
+@csrf_exempt
 def logout_view(request):
     if request.user.is_authenticated():
         logout(request)
-    return redirect('pizza-list')
+    return redirect('login')

@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^register/$', views.register_view, name="register"),
     url(r'^logout/$', views.logout_view, name="logout"),
     url(r'^config/$', views.config, name="config"),
-    url(r'^$', views.pizza_list, name='pizza-list')
+    url(r'^$', views.pizza_list, name="login")
 ]
