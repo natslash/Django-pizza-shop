@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
 
 # Create your views here.
 from django.views.generic import DetailView
@@ -8,6 +9,13 @@ from django.views.generic import DetailView
 from pizzas.forms import PizzaForm, CommentForm
 from pizzas.models import Pizza
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+
+@login_required()
+def config(request):
+    content = 'var config = {token: myToken};'
+    response = HttpResponse(content, content_type='application/javascript')
+    response['Content-Length'] = len(content)
+    return redirect('pizza-list', response)
 
 @login_required()
 def pizza_list(request):
