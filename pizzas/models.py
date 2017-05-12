@@ -46,7 +46,11 @@ class Pizza(models.Model):
             price += ingredient.price
         return price * Decimal(1.5)
 
-    def __unicode__(self):
+# Previous version of Python
+#    def __unicode__(self):
+#        return self.name
+
+    def __str__(self):
         return self.name
 
 
@@ -64,5 +68,9 @@ class Comment(models.Model):
             self.score = 0
         super(Comment, self).save(args, kwargs)
 
-    def __unicode__(self):
+# Previous version of Python
+#    def __unicode__(self):
+#        return self.user.username + " - " + self.text
+
+    def __str__(self):
         return self.user.username + " - " + self.text
