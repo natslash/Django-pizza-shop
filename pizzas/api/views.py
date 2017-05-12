@@ -29,9 +29,9 @@ class PizzaViewSet(viewsets.ModelViewSet):
 
     # @detail_route()
     # def comments(self, pk):
-    #     comments = Comment.objects.filter(pizza__pk=pk)
-    #     serializer = CommentSerializer(comments, many=True)
-    #     return Response(serializer.data)
+    #      comments = Comment.objects.filter(pizza__pk=pk)
+    #      serializer = CommentSerializer(comments, many=True)
+    #      return Response(serializer.data)
 
 
 class CommentViewSet(viewsets.ModelViewSet):
