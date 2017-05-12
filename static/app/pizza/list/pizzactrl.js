@@ -29,7 +29,7 @@ export class PizzaCtrl {
         this.comment.date = new Date();
         this.comment.text = this.comment.text || "";
         this.comment.pizza = parseInt(this.id);
-        this.comment.user = "TODO";
+        // this.comment.user = "TODO";
         this.pizzaService.submitComment(this.comment);
     }
 }

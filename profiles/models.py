@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -17,7 +18,7 @@ def user_username_check(text, uids):
 
 class User(AbstractBaseUser, PermissionsMixin):
 
-    email = models.EmailField(_("Email address"), unique=False)
+    email = models.EmailField(_("Email address"), unique=True)
     username = models.CharField(_("Username"), max_length=254, unique=True)
     name = models.CharField(verbose_name=_("Name"), max_length=100, blank=True)
     phone = models.CharField(verbose_name=_("Phone"), max_length=30, blank=True)
@@ -39,7 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "username"
-    #REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = ['email']
 
     def get_full_name(self):
         return self.full_name

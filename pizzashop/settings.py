@@ -38,7 +38,7 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
     #'rest_framework_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend',
-   #'profiles.backend.EmailAuthBackend'
+    'profiles.backend.EmailAuthBackend'
 ]
 
 # Application definition
@@ -227,10 +227,14 @@ SOCIAL_AUTH_GITHUB_SECRET = "0956a775f85e41f11655ad2e2d73de38c5713614"
 
 SOCIAL_AUTH_TWITTER_KEY = "jHwqhm5LR4tsIrjt4dhrGYhqa"
 SOCIAL_AUTH_TWITTER_SECRET = "rofsOtI5juVjLDucFwRmPNlWg9TQhELpXJ3NOfr9Xw4P5g2Bzw"
+SOCIAL_AUTH_TWITTER_PROFILE_EXTRA_PARAMS = {
+      'locale': 'es_ES',
+      'fields': 'id, name, email'
+    }
 
 # Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from facebook.
 # Email is not sent by default, to get it, you must request the email permission:
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_TWITTER_SCOPE = ['email']
 
 
 CORS_ORIGIN_WHITELIST = (
