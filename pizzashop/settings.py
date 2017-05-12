@@ -31,11 +31,14 @@ ALLOWED_HOSTS = []
 ########## AUTH CONFIGURATION
 AUTH_USER_MODEL = "profiles.User"
 AUTHENTICATION_BACKENDS = [
-    'social.backends.facebook.FacebookAppOAuth2',
-    'profiles.facebook.auth.CustomFacebookOAuth2',
-    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+    #'social.backends.facebook.FacebookAppOAuth2',
+    #'profiles.facebook.auth.CustomFacebookOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    #'rest_framework_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend',
-    'profiles.backend.EmailAuthBackend'
+   #'profiles.backend.EmailAuthBackend'
 ]
 
 # Application definition
@@ -72,7 +75,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
-    'django.middleware.locale.LocaleMiddleware'
+    'django.middleware.locale.LocaleMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware' # <--
+
 ]
 
 ROOT_URLCONF = 'pizzashop.urls'
@@ -80,8 +85,7 @@ ROOT_URLCONF = 'pizzashop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'static/templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'static/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,7 +93,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect', # <--
+            ]
         },
     },
 ]
@@ -109,7 +115,7 @@ DATABASES = {
 
 # Login
 LOGIN_URL = '/login'
-
+LOGIN_REDIRECT_URL = '/#!/pizzas'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -203,15 +209,24 @@ OAUTH2_PROVIDER = {
 # ------------------------------------------------------------------------------
 # See: https://github.com/PhilipGarnero/django-rest-framework-social-oauth2
 
-PROPRIETARY_BACKEND_NAME = 'Facebook'
+# PROPRIETARY_BACKEND_NAME = 'Facebook'
 
 # Facebook configuration
-SOCIAL_AUTH_FACEBOOK_KEY = "1796735767253135"
-SOCIAL_AUTH_FACEBOOK_SECRET = "644f6e29aa4c6a2c991b3bf9fcad6b86"
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'locale': 'es_ES',
-    'fields': 'id, name, email'
-}
+#SOCIAL_AUTH_FACEBOOK_KEY = "1796735767253135"
+#SOCIAL_AUTH_FACEBOOK_SECRET = "644f6e29aa4c6a2c991b3bf9fcad6b86"
+# SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+#    'locale': 'es_ES',
+#   'fields': 'id, name, email'
+# }
+
+SOCIAL_AUTH_FACEBOOK_KEY = "468838656786816"
+SOCIAL_AUTH_FACEBOOK_SECRET = "826993f9380880659d1729f2a3b63e97"
+
+SOCIAL_AUTH_GITHUB_KEY = "b516c36553901171545a"
+SOCIAL_AUTH_GITHUB_SECRET = "0956a775f85e41f11655ad2e2d73de38c5713614"
+
+SOCIAL_AUTH_TWITTER_KEY = "jHwqhm5LR4tsIrjt4dhrGYhqa"
+SOCIAL_AUTH_TWITTER_SECRET = "rofsOtI5juVjLDucFwRmPNlWg9TQhELpXJ3NOfr9Xw4P5g2Bzw"
 
 # Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from facebook.
 # Email is not sent by default, to get it, you must request the email permission:

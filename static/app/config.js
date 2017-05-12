@@ -23,8 +23,6 @@ export function config(stateProvider, urlRouterProvider, httpProvider) {
             url: 'pizzas/add',
             component: 'ilAddPizza'
         });
-    // httpProvider.defaults.xsrfCookieName = 'csrftoken';
-    // httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 }
 
 App.config(config);  
