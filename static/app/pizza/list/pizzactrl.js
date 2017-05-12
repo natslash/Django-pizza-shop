@@ -6,7 +6,7 @@ export class PizzaCtrl {
         this.pizzaService = pizzaService;
         this.name = null;
         this.img = null;
-        this.ingridients = null;
+        this.ingredients = null;
         this.comments = null;
         this.comment = {};
         this.config(state);
@@ -17,13 +17,13 @@ export class PizzaCtrl {
             .then(function (response) {
                 let data = response.data;
                 _this.name = data.name;
-                _this.img = data.img;
-                _this.ingridients = data.ingridients;
+                _this.img = data.image;
+                _this.ingredients = data.ingredients;
                 _this.comments = data.comments;
             });
     }
     hasIngridients() {
-        return this.ingridients && this.ingridients.length > 0;
+        return this.ingredients && this.ingredients.length > 0;
     }
     submitComment() {
         this.comment.date = new Date();

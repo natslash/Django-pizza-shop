@@ -8,7 +8,7 @@ function pizzaListCtrl(pizzaListService) {
 
     function getPizzas() {
         pizzaListService.getPizzas()
-            .then(c => _this.pizzas = c.data);
+            .then(c => _this.pizzas = c.data.results);
     }
 }
 App.controller('pizzaListCtrl', pizzaListCtrl);

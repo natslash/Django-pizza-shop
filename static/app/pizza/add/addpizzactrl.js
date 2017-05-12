@@ -3,10 +3,10 @@ import { App } from '../../module';
 export class AddPizzaCtrl {
     constructor(addPizzaService) {
         this.addPizzaService = addPizzaService;
-        this.ingridients = null;
+        this.ingredients = null;
         this.pizza = {
             name: null,
-            ingridients: [],
+            ingredients: [],
             image: null
         }; 
         this.getIngridients();
@@ -17,7 +17,8 @@ export class AddPizzaCtrl {
     getIngridients() {
         let _this = this;
         this.addPizzaService.getIngridients()
-            .then(c => _this.ingridients = c.data);
+            .then(c => _this.ingredients = c.data.results);
+         
     }
 }
 AddPizzaCtrl.$inject = ['addPizzaService'];

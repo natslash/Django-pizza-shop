@@ -88340,7 +88340,7 @@ function appCtrl(mdSidenav) {
 }
 App.controller('appCtrl', appCtrl);
 
-var html$1 = "<md-content class=\"md-padding\" layout=\"column\" layout-gt-sm=\"row\" layout-wrap>\r\n    <div flex-gt-sm=\"50\" flex-gt-md=\"33\" ng-repeat=\"pizza in $ctrl.pizzas\">\r\n        <md-card style=\"min-height: 382px; min-width: 308px;\"class=\"md-button\" ui-sref=\"pizzas({id: pizza.id})\">\r\n            <md-card-title>\r\n                <md-card-title-text>\r\n                    <span class=\"md-seccondary\">{{pizza.name}}</span>\r\n                </md-card-title-text>\r\n            </md-card-title>\r\n            <img ng-src=\"{{pizza.img}}\" class=\"md-card-image\">\r\n        </md-card>\r\n</md-content>";
+var html$1 = "<md-content class=\"md-padding\" layout=\"column\" layout-gt-sm=\"row\" layout-wrap>\r\n    <div flex-gt-sm=\"50\" flex-gt-md=\"33\" ng-repeat=\"pizza in $ctrl.pizzas\">\r\n        <md-card style=\"min-height: 382px; min-width: 308px;\"class=\"md-button\" ui-sref=\"pizzas({id: pizza.id})\">\r\n            <md-card-title>\r\n                <md-card-title-text>\r\n                    <span class=\"md-seccondary\">{{pizza.name}}</span>\r\n                </md-card-title-text>\r\n            </md-card-title>\r\n            <img ng-src=\"{{pizza.image}}\" class=\"md-card-image\">\r\n        </md-card>\r\n</md-content>";
 
 var ilPizzaList = {
     controller: 'pizzaListCtrl',
@@ -88356,7 +88356,7 @@ function pizzaListCtrl(pizzaListService) {
 
     function getPizzas() {
         pizzaListService.getPizzas().then(function (c) {
-            return _this.pizzas = c.data;
+            return _this.pizzas = c.data.results;
         });
     }
 }
@@ -88366,13 +88366,15 @@ pizzaListService.$inject = ['$http'];
 function pizzaListService($http) {
     return {
         getPizzas: function getPizzas() {
-            return $http.get('http://localhost:3000/pizzas');
+            return $http.get(
+            // 'http://localhost:3000/pizzas'
+            'http://localhost:8000/api/v1/pizzas');
         }
     };
 }
 App.service('pizzaListService', pizzaListService);
 
-var html$2 = "<md-content class=\"md-padding\" layout-xs=\"column\" layout=\"row\">\n    <div layout=\"column\">\n        <md-card>\n            <img ng-src=\"{{$ctrl.img}}\" class=\"md-card-image\">\n            <md-card-title>\n                <md-card-title-text>\n                    <span class=\"md-headline\" style=\"text-align: center\">{{$ctrl.name | capitalize}}</span>\n                </md-card-title-text>\n            </md-card-title>\n        </md-card>\n        <md-content layout-padding>\n            <form name=\"commentForm\">\n                <md-input-container class=\"md-block\">\n                    <label>Score</label>\n                    <input required type=\"number\" step=\"any\" name=\"score\" ng-model=\"$ctrl.comment.score\" min=\"0\" max=\"10\" />\n                    <div ng-messages=\"commentForm.score.$error\" multiple md-auto-hide=\"false\">\n                        <div ng-message=\"required\">\n                            You've got to put a score!\n                        </div>\n                        <div ng-message=\"min\">\n                            You should score at least 0.\n                        </div>\n                        <div ng-message=\"max\">\n                            That's a little ridiculous.\n                        </div>\n                    </div>\n                </md-input-container>\n                <md-input-container class=\"md-block\">\n                    <textarea name=\"text\" ng-model=\"$ctrl.comment.text\" md-maxlength=\"150\"></textarea>\n                </md-input-container>\n                <div>\n                    <md-button type=\"submit\" ng-click=\"$ctrl.submitComment()\">Submit</md-button>\n                </div>\n            </form>\n        </md-content>\n        <md-list layout-padding flex>\n            <div class=\"md-title\">Comments</div>\n            <md-list-item class=\"md-3-line\" ng-repeat=\"comment in $ctrl.comments\">\n                <div class=\"md-list-item-text\">\n                    <h3>{{comment.user}}: {{comment.score}}</h3>\n                    <h4>{{comment.created}}</h4>\n                    <p>{{comment.text}}</p>\n                </div>\n            </md-list-item>\n        </md-list>\n    </div>\n    <div layout=\"row\" flex>\n        <md-list layout-padding ng-show=\"$ctrl.hasIngridients()\">\n            <div class=\"md-title\">Ingridients</div>\n            <md-list-item class=\"md-3-line\" ng-repeat=\"ingridient in $ctrl.ingridients\">\n                <div class=\"md-list-item-text\">\n                    <h3>{{ingridient.name | capitalize}}:</h3>\n                    <p>{{ingridient.prize}}$</p>\n                </div>\n            </md-list-item>\n        </md-list>\n    </div>\n</md-content>";
+var html$2 = "<md-content class=\"md-padding\" layout-xs=\"column\" layout=\"row\">\n    <div layout=\"column\">\n        <md-card>\n            <img ng-src=\"{{$ctrl.img}}\" class=\"md-card-image\">\n            <md-card-title>\n                <md-card-title-text>\n                    <span class=\"md-headline\" style=\"text-align: center\">{{$ctrl.name | capitalize}}</span>\n                </md-card-title-text>\n            </md-card-title>\n        </md-card>\n        <md-content layout-padding>\n            <form name=\"commentForm\">\n                <md-input-container class=\"md-block\">\n                    <label>Score</label>\n                    <input required type=\"number\" step=\"any\" name=\"score\" ng-model=\"$ctrl.comment.score\" min=\"0\" max=\"10\" />\n                    <div ng-messages=\"commentForm.score.$error\" multiple md-auto-hide=\"false\">\n                        <div ng-message=\"required\">\n                            You've got to put a score!\n                        </div>\n                        <div ng-message=\"min\">\n                            You should score at least 0.\n                        </div>\n                        <div ng-message=\"max\">\n                            That's a little ridiculous.\n                        </div>\n                    </div>\n                </md-input-container>\n                <md-input-container class=\"md-block\">\n                    <textarea name=\"text\" ng-model=\"$ctrl.comment.text\" md-maxlength=\"150\"></textarea>\n                </md-input-container>\n                <div>\n                    <md-button type=\"submit\" ng-click=\"$ctrl.submitComment()\">Submit</md-button>\n                </div>\n            </form>\n        </md-content>\n        <md-list layout-padding flex>\n            <div class=\"md-title\">Comments</div>\n            <md-list-item class=\"md-3-line\" ng-repeat=\"comment in $ctrl.comments\">\n                <div class=\"md-list-item-text\">\n                    <h3>{{comment.user}}: {{comment.score}}</h3>\n                    <h4>{{comment.created}}</h4>\n                    <p>{{comment.text}}</p>\n                </div>\n            </md-list-item>\n        </md-list>\n    </div>\n    <div layout=\"row\" flex>\n        <md-list layout-padding ng-show=\"$ctrl.hasIngridients()\">\n            <div class=\"md-title\">Ingredients</div>\n            <md-list-item class=\"md-3-line\" ng-repeat=\"ingredient in $ctrl.ingredients\">\n                <div class=\"md-list-item-text\">\n                    <h3>{{ingredient.name | capitalize}}:</h3>\n                    <p>{{ingredient.price}}€</p>\n                </div>\n            </md-list-item>\n        </md-list>\n    </div>\n</md-content>";
 
 var ilPizza = {
     controller: 'pizzaCtrl',
@@ -88412,7 +88414,7 @@ var PizzaCtrl = function () {
         this.pizzaService = pizzaService;
         this.name = null;
         this.img = null;
-        this.ingridients = null;
+        this.ingredients = null;
         this.comments = null;
         this.comment = {};
         this.config(state);
@@ -88425,15 +88427,15 @@ var PizzaCtrl = function () {
             this.pizzaService.getPizza(this.id).then(function (response) {
                 var data = response.data;
                 _this.name = data.name;
-                _this.img = data.img;
-                _this.ingridients = data.ingridients;
+                _this.img = data.image;
+                _this.ingredients = data.ingredients;
                 _this.comments = data.comments;
             });
         }
     }, {
         key: 'hasIngridients',
         value: function hasIngridients() {
-            return this.ingridients && this.ingridients.length > 0;
+            return this.ingredients && this.ingredients.length > 0;
         }
     }, {
         key: 'submitComment',
@@ -88460,13 +88462,15 @@ var PizzaService = function () {
     createClass(PizzaService, [{
         key: 'getPizza',
         value: function getPizza(id) {
-            return this.http.get('http://localhost:3000/pizzas/' + id);
+            return this.http.get('http://localhost:8000/api/v1/pizzas/' + id);
         }
     }, {
         key: 'submitComment',
         value: function submitComment(data) {
             console.log(data);
-            return this.http.post('http://localhost:3000/comments/', data);
+            return this.http.post(
+            //TODO hacer post de comentarios
+            'http://localhost:3000/comments/', data);
         }
     }]);
     return PizzaService;
@@ -88475,7 +88479,7 @@ var PizzaService = function () {
 PizzaService.$inject = ['$http'];
 App.service('pizzaService', PizzaService);
 
-var html$3 = "<md-content class=\"md-padding\" layout=\"column\" layout-wrap layout-padding>\r\n        <form name=\"pizzaForm\">\r\n            <div layout=\"column\">\r\n                <md-input-container class=\"md-block\">\r\n                    <label>Pizza:</label>\r\n                    <input required type=\"string\" name=\"name\" ng-model=\"$ctrl.pizza.name\" />\r\n                    <div ng-messages=\"pizzaForm.name.$error\" md-auto-hide=\"false\">\r\n                        <div ng-message=\"required\">\r\n                            You've got to put a name!\r\n                        </div>\r\n                    </div>\r\n                </md-input-container>\r\n\r\n                <md-input-container>\r\n                    <label>Ingredients</label>\r\n                    <md-select ng-model=\"$ctrl.pizza.ingredients\" multiple>\r\n                        <md-option ng-repeat=\"ingridient in $ctrl.ingridients\" value=\"{{ingridient.name}}\">\r\n                            {{ingridient.name}}\r\n                        </md-option>\r\n                    </md-select>\r\n                </md-input-container>\r\n            </div>\r\n\r\n            <div layout=\"row\">\r\n                <div>\r\n                    <div class=\"md-button md-primary\" type=\"file\" il-img-viewer ngf-select ng-required ng-model=\"$ctrl.picFile\" name=\"file\" ngf-max-size=\"2MB\"\r\n                        ngf-resize=\"{width: 296, height: 296}\">\r\n                        Upload Image\r\n                    </div>\r\n                    <label class=\"md-subhead\">{{$ctrl.picFile.$ngfName}}</label>\r\n                    <div>\r\n                        <img id=\"preview\" />\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div layout=\"row\">\r\n                <md-button class=\"md-primary\" type=\"submit\" ng-click=\"$ctrl.savePizza() \">Submit</md-button>\r\n            </div>\r\n        </form>\r\n</md-content>\r\n";
+var html$3 = "<md-content class=\"md-padding\" layout=\"column\" layout-wrap layout-padding>\r\n        <form name=\"pizzaForm\">\r\n            <div layout=\"column\">\r\n                <md-input-container class=\"md-block\">\r\n                    <label>Pizza:</label>\r\n                    <input required type=\"string\" name=\"name\" ng-model=\"$ctrl.pizza.name\" />\r\n                    <div ng-messages=\"pizzaForm.name.$error\" md-auto-hide=\"false\">\r\n                        <div ng-message=\"required\">\r\n                            You've got to put a name!\r\n                        </div>\r\n                    </div>\r\n                </md-input-container>\r\n\r\n                <md-input-container>\r\n                    <label>Ingredients</label>\r\n                    <md-select ng-model=\"$ctrl.pizza.ingredients\" multiple>\r\n                        <md-option ng-repeat=\"ingredient in $ctrl.ingredients\" value=\"{{ingredient.name}}\">\r\n                            {{ingredient.name}}\r\n                        </md-option>\r\n                    </md-select>\r\n                </md-input-container>\r\n            </div>\r\n\r\n            <div layout=\"row\">\r\n                <div>\r\n                    <div class=\"md-button md-primary\" type=\"file\" il-img-viewer ngf-select ng-required ng-model=\"$ctrl.picFile\" name=\"file\" ngf-max-size=\"2MB\"\r\n                        ngf-resize=\"{width: 296, height: 296}\">\r\n                        Upload Image\r\n                    </div>\r\n                    <label class=\"md-subhead\">{{$ctrl.picFile.$ngfName}}</label>\r\n                    <div>\r\n                        <img id=\"preview\" />\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div layout=\"row\">\r\n                <md-button class=\"md-primary\" type=\"submit\" ng-click=\"$ctrl.savePizza() \">Submit</md-button>\r\n            </div>\r\n        </form>\r\n</md-content>\r\n";
 
 var ilAddPizza = {
     controller: 'addPizzaCtrl',
@@ -88488,10 +88492,10 @@ var AddPizzaCtrl = function () {
         classCallCheck(this, AddPizzaCtrl);
 
         this.addPizzaService = addPizzaService;
-        this.ingridients = null;
+        this.ingredients = null;
         this.pizza = {
             name: null,
-            ingridients: [],
+            ingredients: [],
             image: null
         };
         this.getIngridients();
@@ -88507,7 +88511,7 @@ var AddPizzaCtrl = function () {
         value: function getIngridients() {
             var _this = this;
             this.addPizzaService.getIngridients().then(function (c) {
-                return _this.ingridients = c.data;
+                return _this.ingredients = c.data.results;
             });
         }
     }]);
@@ -88527,12 +88531,12 @@ var AddPizzaService = function () {
     createClass(AddPizzaService, [{
         key: 'savePizza',
         value: function savePizza(data) {
-            return this.http.post(this.resolveUrl.resolve('pizzas'), data);
+            return this.http.post('http://localhost:8000/api/v1/pizzas/', data);
         }
     }, {
         key: 'getIngridients',
         value: function getIngridients() {
-            return this.http.get(this.resolveUrl.resolve('ingridients'));
+            return this.http.get('http://localhost:8000/api/v1/ingredients');
         }
     }]);
     return AddPizzaService;

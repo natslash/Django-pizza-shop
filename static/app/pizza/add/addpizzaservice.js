@@ -7,13 +7,13 @@ export class AddPizzaService {
     }
     savePizza(data) {
         return this.http.post(
-            this.resolveUrl.resolve('pizzas'),
+           'http://localhost:8000/api/v1/pizzas/',
             data
         );
     }
     getIngridients(){
         return this.http.get(
-            this.resolveUrl.resolve('ingridients'),
+            'http://localhost:8000/api/v1/ingredients'
         );
     }
 }

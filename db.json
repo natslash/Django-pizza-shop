@@ -4,7 +4,7 @@
       "id": 1,
       "name": "margarita",
       "img": "static/img/margarita.png",
-      "ingridients": [],
+      "ingredients": [],
       "comments": [
         {
           "text": "bad",
@@ -19,7 +19,7 @@
       "id": 2,
       "name": "carbonara",
       "img": "static/img/carbonara.png",
-      "ingridients": [
+      "ingredients": [
         {
           "id": 3,
           "name": "bacon",
@@ -52,7 +52,7 @@
     },
     {
       "name": "35353",
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "ingredients": [
         "corn",
@@ -63,19 +63,19 @@
     },
     {
       "name": null,
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "id": 4
     },
     {
       "name": "1212",
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "id": 5
     },
     {
       "name": "adada",
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "ingredients": [
         "onion",
@@ -85,43 +85,43 @@
     },
     {
       "name": null,
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "id": 7
     },
     {
       "name": "3",
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "id": 8
     },
     {
       "name": "2",
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "id": 9
     },
     {
       "name": "3",
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "id": 10
     },
     {
       "name": null,
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "id": 11
     },
     {
       "name": "1",
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "id": 12
     },
     {
       "name": "sfsfs",
-      "ingridients": [],
+      "ingredients": [],
       "image": null,
       "ingredients": [
         "onion"
@@ -129,7 +129,7 @@
       "id": 13
     }
   ],
-  "ingridients": [
+  "ingredients": [
     {
       "id": 1,
       "name": "onion",

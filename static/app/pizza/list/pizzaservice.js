@@ -6,12 +6,13 @@ export class PizzaService {
     }
     getPizza(id) {
         return this.http.get(
-            `http://localhost:3000/pizzas/${id}`
+            `http://localhost:8000/api/v1/pizzas/${id}`
         );
     }
     submitComment(data) {
         console.log(data);
         return this.http.post(
+            //TODO hacer post de comentarios
             `http://localhost:3000/comments/`,
             data
         );

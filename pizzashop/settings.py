@@ -79,7 +79,6 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware' # <--
 
 ]
-
 ROOT_URLCONF = 'pizzashop.urls'
 
 TEMPLATES = [
