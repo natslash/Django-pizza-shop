@@ -7,7 +7,8 @@ export class AddPizzaCtrl {
         this.pizza = {
             name: null,
             ingredients: [],
-            image: null
+            image: null,
+            comments: []
         }; 
         this.getIngridients();
     }

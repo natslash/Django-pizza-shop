@@ -14,7 +14,7 @@
                 <md-input-container>
                     <label>Ingredients</label>
                     <md-select ng-model="$ctrl.pizza.ingredients" multiple>
-                        <md-option ng-repeat="ingredient in $ctrl.ingredients" value="{{ingredient.name}}">
+                        <md-option ng-repeat="ingredient in $ctrl.ingredients" value="{{ingredient}}">
                             {{ingredient.name}}
                         </md-option>
                     </md-select>
