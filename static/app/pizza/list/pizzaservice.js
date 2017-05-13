@@ -1,13 +1,12 @@
 import { App } from '../../module';
 
 export class PizzaService {
-    constructor(http, resolveUrl) {
+    constructor(http) {
         this.http = http;
-        this.resolveUrl =  resolveUrl;
     }
     getPizza(id) {
         return this.http.get(
-            `http://localhost:8000/api/v1/pizzas/${id}`
+            `/api/v1/pizzas/${id}`
         );
     }
     submitComment(data) {
@@ -20,5 +19,5 @@ export class PizzaService {
     }
 }
 
-PizzaService.$inject = ['$http', 'resolveUrl'];
+PizzaService.$inject = ['$http'];
 App.service('pizzaService', PizzaService);
