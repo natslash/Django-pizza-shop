@@ -238,4 +238,5 @@ SOCIAL_AUTH_TWITTER_SCOPE = ['email']
 
 CORS_ORIGIN_WHITELIST = (
     'alfatecsistemas.es',
+    'http://demo-pizzashop.herokuapp.com'
 )
