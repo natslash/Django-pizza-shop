@@ -12,3 +12,5 @@ python-social-auth
 social-auth-app-django
 django-cors-headers
 dj-static
+whitenoise==3.2
+gunicorn==19.6.0
