@@ -1,8 +1,9 @@
 import { App } from '../../module';
 
 export class PizzaService {
-    constructor(http) {
+    constructor(http, resolveUrl) {
         this.http = http;
+        this.resolveUrl =  resolveUrl;
     }
     getPizza(id) {
         return this.http.get(
@@ -19,5 +20,5 @@ export class PizzaService {
     }
 }
 
-PizzaService.$inject = ['$http'];
+PizzaService.$inject = ['$http', 'resolveUrl'];
 App.service('pizzaService', PizzaService);
