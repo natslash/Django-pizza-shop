@@ -26,7 +26,7 @@ SECRET_KEY = 'p9!v&vp04-1rtrp3lxt5dou+tbpx(-)%7tz(lo11d82qeqkt9n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['demo-pizzashop.herokuapp.com']
+ALLOWED_HOSTS = ['demo-pizzashop.herokuapp.com', 'localhost']
 
 ########## AUTH CONFIGURATION
 AUTH_USER_MODEL = "profiles.User"
