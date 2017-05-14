@@ -26,15 +26,6 @@ class PizzaSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def create(self, validated_data):
-        array = []
-        ingredients_data = validated_data.pop('ingredients')
-        for ingredientes in ingredients_data:
-            p = Ingredient.objects.create(**ingredientes)
-            array.append(p)
-        pizza = Pizza.objects.create(**validated_data)
-        #pizza.ingredients.add(array[0])
-        for i in range(len(array)):
-            pizza.ingredients.add(array[i])
         ingredients_data = validated_data.pop('ingredients')
         pizza = Pizza.objects.create(**validated_data)
         for ingredient in ingredients_data:
