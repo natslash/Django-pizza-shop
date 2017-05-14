@@ -18,7 +18,7 @@ def config(request):
     response['Content-Length'] = len(content)
     return response
 
-@login_required()
+#@login_required()
 def pizza_list(request):
     return render(request, 'pizzashop/index.html')
 

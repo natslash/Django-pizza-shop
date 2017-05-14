@@ -1,11 +1,5 @@
-
-input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
-display:inline-block;
-margin:20px;
-padding: 4px 16px;
-background-color: #FFFFFF;
-border:solid 1px #666F77;
-border-radius: 6px;
-color:#666F77;
+.pizza-card{
+     height: 382px;
+     width: 308px;
 }
 
