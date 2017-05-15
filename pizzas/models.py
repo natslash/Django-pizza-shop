@@ -66,7 +66,7 @@ class Comment(models.Model):
             self.score = 5
         elif self.score < 0:
             self.score = 0
-        super(Comment, self).save(args, kwargs)
+        super(Comment, self).save(*args, **kwargs)
 
 # Previous version of Python
 #    def __unicode__(self):

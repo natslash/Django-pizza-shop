@@ -26,10 +26,9 @@ export class PizzaCtrl {
         return this.ingredients && this.ingredients.length > 0;
     }
     submitComment() {
-        this.comment.date = new Date();
         this.comment.text = this.comment.text || "";
         this.comment.pizza = parseInt(this.id);
-        // this.comment.user = "TODO";
+        this.comment.user = 1;
         this.pizzaService.submitComment(this.comment);
     }
 }
