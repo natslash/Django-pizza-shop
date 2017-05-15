@@ -11,12 +11,12 @@ from pizzas.forms import PizzaForm, CommentForm
 from pizzas.models import Pizza
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
-# @login_required()
-# def config(request):
-#     content = 'var config = {token: myToken};'
-#     response = HttpResponse(content, content_type='application/javascript')
-#     response['Content-Length'] = len(content)
-#     return response
+@login_required()
+def config(request):
+    content = 'var config = {token: myToken};'
+    response = HttpResponse(content, content_type='application/javascript')
+    response['Content-Length'] = len(content)
+    return response
 
 # @login_required()
 def pizza_list(request):
