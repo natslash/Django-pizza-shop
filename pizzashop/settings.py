@@ -208,35 +208,30 @@ OAUTH2_PROVIDER = {
 # ------------------------------------------------------------------------------
 # See: https://github.com/PhilipGarnero/django-rest-framework-social-oauth2
 
-# PROPRIETARY_BACKEND_NAME = 'Facebook'
+PROPRIETARY_BACKEND_NAME = 'Facebook'
 
 # Facebook configuration
-#SOCIAL_AUTH_FACEBOOK_KEY = "1796735767253135"
-#SOCIAL_AUTH_FACEBOOK_SECRET = "644f6e29aa4c6a2c991b3bf9fcad6b86"
-# SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-#    'locale': 'es_ES',
-#   'fields': 'id, name, email'
-# }
-
-SOCIAL_AUTH_FACEBOOK_KEY = "468838656786816"
-SOCIAL_AUTH_FACEBOOK_SECRET = "826993f9380880659d1729f2a3b63e97"
-
-SOCIAL_AUTH_GITHUB_KEY = "b516c36553901171545a"
-SOCIAL_AUTH_GITHUB_SECRET = "0956a775f85e41f11655ad2e2d73de38c5713614"
-
-SOCIAL_AUTH_TWITTER_KEY = "jHwqhm5LR4tsIrjt4dhrGYhqa"
-SOCIAL_AUTH_TWITTER_SECRET = "rofsOtI5juVjLDucFwRmPNlWg9TQhELpXJ3NOfr9Xw4P5g2Bzw"
-SOCIAL_AUTH_TWITTER_PROFILE_EXTRA_PARAMS = {
-      'locale': 'es_ES',
-      'fields': 'id, name, email'
-    }
-
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+   'locale': 'es_ES',
+  'fields': 'id, name, email'
+}
 # Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from facebook.
 # Email is not sent by default, to get it, you must request the email permission:
-SOCIAL_AUTH_TWITTER_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_FACEBOOK_KEY = "199575150562657"
+SOCIAL_AUTH_FACEBOOK_SECRET = "e7f62017a4218adc7e62b842421d9c2d"
+
+# SOCIAL_AUTH_GITHUB_KEY = "b516c36553901171545a"
+# SOCIAL_AUTH_GITHUB_SECRET = "0956a775f85e41f11655ad2e2d73de38c5713614"
+
+# SOCIAL_AUTH_TWITTER_KEY = "jHwqhm5LR4tsIrjt4dhrGYhqa"
+# SOCIAL_AUTH_TWITTER_SECRET = "rofsOtI5juVjLDucFwRmPNlWg9TQhELpXJ3NOfr9Xw4P5g2Bzw"
+
+
+
 
 
 CORS_ORIGIN_WHITELIST = (
     'alfatecsistemas.es',
-    #'http://demo-pizzashop.herokuapp.com'
 )
