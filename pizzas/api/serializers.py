@@ -27,6 +27,7 @@ class PizzaSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         ingredients_data = validated_data.pop('ingredients')
+        validated_data.pop('comments')
         pizza = Pizza.objects.create(**validated_data)
         for ingredient in ingredients_data:
             p = Ingredient.objects.get(name=ingredient["name"])
