@@ -15,9 +15,9 @@ export class AddPizzaService {
                 image: picFile,
             },
             transformRequest: function (data, headersGetter) {
-                var formData = new FormData();
+                let formData = new FormData();
                 angular.forEach(data, function (value, key) {
-                    if (key === 'image') {
+                    if (key === 'image' && value) {
                         formData.append(key, value, value.name);
                     }
                     else formData.append(key, value);

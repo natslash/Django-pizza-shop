@@ -74,3 +74,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.user.username + " - " + self.text
+
+    @property
+    def username(self):
+        return self.user.username
