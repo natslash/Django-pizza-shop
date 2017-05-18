@@ -9,7 +9,8 @@ from django.views.generic import DetailView
 
 from pizzas.forms import PizzaForm, CommentForm
 from pizzas.models import Pizza
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from pizzas.forms import CustomUserCreationForm
 
 @login_required()
 def config(request):
@@ -18,7 +19,7 @@ def config(request):
     response['Content-Length'] = len(content)
     return response
 
-# @login_required()
+@login_required()
 def pizza_list(request):
     return render(request, 'pizzashop/index.html')
 
@@ -41,21 +42,23 @@ def login_view(request):
     return render(request, 'registration/login.html', {'form': form})
 
 
+@csrf_exempt
 def register_view(request):
     if request.user.is_authenticated():
         return redirect('pizza-list')
 
     if request.method == "POST":
-        form = UserCreationForm(data=request.POST)
+        form = CustomUserCreationForm(data=request.POST)
         if form.is_valid():
             user = form.save()
+            username = form.cleaned_data.get('username')
             password = form.cleaned_data["password1"]
             user = authenticate(username=user.username, password=password)
             if user is not None:
                 login(request, user)
             return redirect('pizza-list')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
 @csrf_exempt
