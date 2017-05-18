@@ -5,7 +5,7 @@ from django.contrib.auth.models import UserManager, PermissionsMixin
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-
+from .managers import UserManager
 
 # Create your models here.
 
@@ -60,3 +60,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __unicode__(self):
         return self.full_name
+
+
+
+

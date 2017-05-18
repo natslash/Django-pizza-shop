@@ -12,8 +12,7 @@ export class PizzaService {
     submitComment(data) {
         console.log(data);
         return this.http.post(
-            //TODO hacer post de comentarios
-            `http://localhost:3000/comments/`,
+            '/api/v1/comments/',
             data
         );
     }

@@ -1,6 +1,6 @@
 <md-content class="md-padding" layout-xs="column" layout="row">
     <div layout="column">
-        <md-card>
+        <md-card class="pizza-card">
             <img ng-src="{{$ctrl.img}}" class="md-card-image">
             <md-card-title>
                 <md-card-title-text>
@@ -37,7 +37,7 @@
             <div class="md-title">Comments</div>
             <md-list-item class="md-3-line" ng-repeat="comment in $ctrl.comments">
                 <div class="md-list-item-text">
-                    <h3>{{comment.user}}: {{comment.score}}</h3>
+                    <h3>{{comment.username}}: {{comment.score}}</h3>
                     <h4>{{comment.created}}</h4>
                     <p>{{comment.text}}</p>
                 </div>

@@ -23,6 +23,7 @@ const html =
         <md-button class="md-primary" ui-sref="addpizza" ng-click="$ctrl.closeSideNav()">
           Add pizza
         </md-button>
+       <!---
         <div style="text-align:center;">
         <form action="/logout/" method="post">
           <md-button class="md-primary" type="submit" ng-click="$ctrl.closeSideNav()">
@@ -30,6 +31,7 @@ const html =
           </md-button>
         </form>
         </div>
+        -->
       </md-content>
 
     </md-sidenav>

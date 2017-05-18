@@ -7,13 +7,12 @@ export class AddPizzaCtrl {
         this.pizza = {
             name: null,
             ingredients: [],
-            image: null,
-            comments: []
+            image: null
         }; 
         this.getIngridients();
     }
     savePizza() {
-        this.addPizzaService.savePizza(this.pizza);
+        this.addPizzaService.savePizza(this.pizza, this.picFile);
     }
     getIngridients() {
         let _this = this;
